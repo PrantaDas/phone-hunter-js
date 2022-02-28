@@ -16,24 +16,13 @@ const searchPhone=()=>{
 const displaySearchResult=phones=>{
     const resultContainer=document.getElementById('search-result');
     resultContainer.innerHTML='';
+    if(phones){
+        document.getElementById('error-message').style.display='block';
+    }
+    // document.getElementById('error-message').style.display='none';
     phones.forEach(phone=>{
         console.log(phone);
-        // if(phone.length<21){
-        //     const div=document.createElement('div');
-        //     div.classList.add('col');
-        //     div.innerHTML=`
-        //     <div class="card h-100 p-3">
-        //     <img src="${phone.image}" class="card-img-top" alt="...">
-        //     <div class="card-body d-flex flex-column align-items-start">
-        //       <h5 class="card-title text-info">Phone Name: ${phone.phone_name}</h5>
-        //       <p class="card-text fw-bolder text-info">Brand: ${phone.brand}</p>
-        //       <button onclick="loadPhoneById('${phone.slug}')" type="button" class="btn btn-primary">Details</button>
-        //     </div>
-        //   </div>
-    
-        //     `;
-        //     resultContainer.appendChild(div);
-        // }
+        document.getElementById('error-message').style.display='none';
         const div=document.createElement('div');
         div.classList.add('col');
         div.innerHTML=`
@@ -67,12 +56,12 @@ const displayPhoneById=phone=>{
     const div=document.createElement('div');
     div.classList.add('card');
     div.innerHTML=`
-    <div class="card h-150 p-3">
-    <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
+    <div class="card h-150 p-3 w-75">
+    <img src="${phone.image}" class="card-img-top img-fluid w-25" alt="...">
     <div class="card-body d-flex flex-column align-items-start">
       <p class="card-text fw-bolder text-info">Brand: ${phone.brand}</p>
       <h5 class="card-title text-info">Phone Name: ${phone.name}</h5>
-      <p class="card-text fw-bolder text-info">Release Date: ${phone.releaseDate}</p>
+      <p class="card-text fw-bolder text-info"> ${phone.releaseDate?phone.releaseDate:'Release Date Not Found'}</p>
       <p class="card-text fw-bolder text-info">Storage: ${phone.mainFeatures.storage}</p>
       <p class="card-text fw-bolder text-info">Memory: ${phone.mainFeatures.memory}</p>
       <p class="card-text fw-bolder text-info">Display: ${phone.mainFeatures.displaySize}</p>
