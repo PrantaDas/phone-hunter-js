@@ -1,5 +1,3 @@
-console.log('js added');
-
 const searchPhone=()=>{
     
     const searchField=document.getElementById('search-phone');
@@ -15,14 +13,16 @@ const searchPhone=()=>{
 
 const displaySearchResult=phones=>{
     const resultContainer=document.getElementById('search-result');
-    resultContainer.innerHTML='';
+    // resultContainer.innerHTML='';
     if(phones){
         document.getElementById('error-message').style.display='block';
     }
-    // document.getElementById('error-message').style.display='none';
-    phones.forEach(phone=>{
-        console.log(phone);
+    if(phones.length>=20||phones.length<20){
         document.getElementById('error-message').style.display='none';
+        resultContainer.innerHTML='';
+        const part=phones.slice(0,20);
+        part.forEach(phone=>{
+        console.log(phone);
         const div=document.createElement('div');
         div.classList.add('col');
         div.innerHTML=`
@@ -39,6 +39,7 @@ const displaySearchResult=phones=>{
         `;
         resultContainer.appendChild(div);
     })
+    }
 }
 
 const loadPhoneById=phoneId=>{
@@ -61,7 +62,7 @@ const displayPhoneById=phone=>{
     <div class="card-body d-flex flex-column align-items-start">
       <p class="card-text fw-bolder text-info">Brand: ${phone.brand}</p>
       <h5 class="card-title text-info">Phone Name: ${phone.name}</h5>
-      <p class="card-text fw-bolder text-info"> ${phone.releaseDate?phone.releaseDate:'Release Date Not Found'}</p>
+      <p class="card-text fw-bolder text-info">Release Date: ${phone.releaseDate?phone.releaseDate:'Release Date Not Found'}</p>
       <p class="card-text fw-bolder text-info">Storage: ${phone.mainFeatures.storage}</p>
       <p class="card-text fw-bolder text-info">Memory: ${phone.mainFeatures.memory}</p>
       <p class="card-text fw-bolder text-info">Display: ${phone.mainFeatures.displaySize}</p>
