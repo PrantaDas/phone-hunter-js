@@ -62,17 +62,17 @@ const displayPhoneById=phone=>{
     const div=document.createElement('div');
     div.classList.add('card');
     div.innerHTML=`
-    <div class="card h-150 p-3 w-75">
+    <div class="card h-150  p-3 w-100 col-sm-12">
     <img src="${phone.image}" class="card-img-top img-fluid w-25" alt="...">
-    <div class="card-body d-flex flex-column align-items-start">
+    <div class="card-body d-flex flex-column align-items-star break-word ">
       <p class="card-text fw-bolder text-info">Brand: ${phone.brand}</p>
       <h5 class="card-title text-info">Phone Name: ${phone.name}</h5>
-      <p class="card-text fw-bolder text-info">Release Date: ${phone.releaseDate?phone.releaseDate:'Release Date Not Found'}</p>
+      <p class="card-text fw-bolder text-info break-word">Release Date: ${phone.releaseDate?phone.releaseDate:'Release Date Not Found'}</p>
       <p class="card-text fw-bolder text-info">Storage: ${phone.mainFeatures.storage}</p>
       <p class="card-text fw-bolder text-info">Memory: ${phone.mainFeatures.memory}</p>
       <p class="card-text fw-bolder text-info">Display: ${phone.mainFeatures.displaySize}</p>
       <p class="card-text fw-bolder text-info">Chipset: ${phone.mainFeatures.chipSet}</p>
-      <p class="card-text fw-bolder text-info">Sensor: ${phone.mainFeatures.sensors}</p>
+      <p class="card-text fw-bolder text-info text-break">Sensor: ${phone.mainFeatures.sensors}</p>
       
     </div>
   </div>
